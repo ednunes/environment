@@ -49,14 +49,24 @@ set statusline+=\%{GetDateAndTime()}
 
 set sessionoptions-=options
 
-let g:airline_theme='simple'
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+    let g:airline_symbols.branch = '⎇'
+endif
+
+let g:airline_theme='ravenpower'
+" let g:airline_theme='simple'
+" let g:airline_theme='dark_minimal'
 let g:airline_section_y ='%{strftime("%c")}'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep = '▶'
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
 
 " PLUGINS
 " Install plugin manager
-"curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 call plug#begin('~/.vim/plugged')
 
@@ -76,5 +86,6 @@ Plug 'ekalinin/dockerfile.vim'
 " https://vimawesome.com/plugin/vim-javascript
 Plug 'pangloss/vim-javascript'
 
-call plug#end()
+Plug 'chrisbra/csv.vim'
 
+call plug#end()
